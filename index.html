@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student ID Card Generator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      box-sizing: border-box;
+      min-height: 100vh;
+      background-color: #e6f0ff; /* light blue background */
+    }
+
+    .main {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+      justify-content: center;
+      margin: auto;
+      margin-left: 25px;
+    }
+
+    form {
+      width: 400px;
+      border: 1px solid rgba(128, 128, 128, 0.2);
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 50px;
+    }
+
+    label {
+      width: 100%;
+      font-weight: 600;
+      font-size: 16px;
+      color: #003366;
+    }
+
+    input {
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      outline: none;
+      padding: 6px;
+      border: 1px solid #aac4e0;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+
+    input:hover {
+      box-shadow: 0px 0px 6px rgba(0, 102, 204, 0.4);
+      border: none;
+    }
+
+    button[onclick="generateID()"] {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 20px;
+      background-color: #0055cc;
+      border: none;
+      color: white;
+      font-size: 17px;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+    }
+
+    button[onclick="generateID()"]:hover {
+      opacity: 0.85;
+      cursor: pointer;
+      background-color: #0041a8;
+    }
+
+    button[onclick="downloadHandler()"] {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #009973;
+      border: none;
+      color: white;
+      font-size: 17px;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+    }
+
+    button[onclick="downloadHandler()"]:hover {
+      opacity: 0.85;
+      cursor: pointer;
+      background-color: #007a5a;
+    }
+
+    .id-card {
+      width: 300px;
+      min-height: 410px;
+      background: #ffffff;
+      box-shadow: 5px 4px 15px rgba(0,0,0,0.2);
+      text-align: center;
+      display: none;
+      margin-top: 130px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: linear-gradient(45deg, #004aad, #0077ff);
+      color: white;
+      padding: 18px 10px;
+      font-size: 14px;
+      font-weight: bold;
+      position: relative;
+      border-radius: 20px 20px 0px 0px;
+    }
+
+    .card-header::after {
+      content: "";
+      position: absolute;
+      bottom: -25px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: white;
+      border-top-left-radius: 60% 40px;
+      border-top-right-radius: 60% 40px;
+    }
+
+    .photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #004aad;
+      margin: 15px auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .id-details {
+      text-align: left;
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.3;
+      color: #003366;
+      padding-left: 20px;
+    }
+
+    .barcode img {
+      width: 70px;
+      height: 70px;
+      margin-top: 10px;
+    }
+
+    @media (max-width:500px) {
+      main {
+        display: flex;
+        gap: 50px;
+        margin: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="main">
+  
+  <div class="container">
+    <h2 style="color: #003366; text-align: center;">Student ID Generator</h2>
+    <form action="">
+      <label>Name:</label>
+      <input type="text" id="name">
+
+      <label>USN:</label>
+      <input type="text" id="usn">
+
+      <label>Branch:</label>
+      <input type="text" id="branch">
+
+      <label>Date of Birth:</label>
+      <input type="date" id="dob">
+
+      <label>Admission Date:</label>
+      <input type="date" id="admission">
+
+      <label>Valid Till:</label>
+      <input type="date" id="valid">
+
+      <label>Photo:</label>
+      <input type="file" id="photo" accept="image/*">
+
+      <button type="button" onclick="generateID()">Generate ID</button>
+      <button type="button" onclick="downloadHandler()">Download ID Card</button>
+    </form>
+  </div>
+
+  <div class="id-card" id="idCard">
+    <div class="card-header">
+      <h3>Shri Madhwa Vadiraja Institute of Technology and Management Bantakal.</h3>
+    </div>
+    <img id="cardPhoto" class="photo" src="" alt="Student Photo">
+    <div class="id-details">
+      <p><b>Name:</b> <span id="cardName"></span></p>
+      <p><b>USN:</b> <span id="cardUsn"></span></p>
+      <p><b>Branch:</b> <span id="cardBranch"></span></p>
+      <p><b>Date of Birth:</b> <span id="cardDob"></span></p>
+      <p><b>Admission Date:</b> <span id="cardAdmission"></span></p>
+      <p><b>Valid Till:</b> <span id="cardValid"></span></p>
+    </div>
+    <div class="barcode">
+      <img id="barcodeImg" src="https://api.qrserver.com/v1/create-qr-code/?size=200x50&data=IDCARD" alt="Barcode">
+    </div>
+  </div>
+</div> 
+
+<script>
+function generateID() {
+  document.getElementById("cardName").textContent = document.getElementById("name").value;
+  document.getElementById("cardUsn").textContent = document.getElementById("usn").value;
+  document.getElementById("cardBranch").textContent = document.getElementById("branch").value;
+  document.getElementById("cardDob").textContent = document.getElementById("dob").value;
+  document.getElementById("cardAdmission").textContent = document.getElementById("admission").value;
+  document.getElementById("cardValid").textContent = document.getElementById("valid").value;
+
+  const photoInput = document.getElementById("photo").files[0];
+  if (photoInput) {
+    document.getElementById("cardPhoto").src = URL.createObjectURL(photoInput);
+  }
+  document.getElementById("idCard").style.display = "block";
+}
+
+function downloadHandler(){
+  html2pdf().from(idCard).save("idcard.pdf");
+}
+</script>
+</body>
+</html>
