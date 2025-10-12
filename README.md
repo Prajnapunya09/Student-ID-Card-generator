@@ -20,7 +20,7 @@ It allows users to input student details, upload a photo, generate an ID card pr
 
 - **HTML5**  
 - **CSS3**  
-- **JavaScript (Vanilla JS)**  
+- **JavaScript**  
 - **html2pdf.js** for PDF export  
 - **QRServer API** for barcode generation  
 
