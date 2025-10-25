@@ -39,4 +39,6 @@ It allows users to input student details, upload a photo, generate an ID card pr
 ---
 
 ## 🗂️ Folder Structure
-
+Student-ID-Card-Generator/
+├── index.html # Main project file
+├── README.md # Project documentation
