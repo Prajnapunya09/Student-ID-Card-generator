@@ -1,11 +1,11 @@
-# 🪪  Student ID Card Generator
+# 🪪 Student ID Card Generator
 
 A simple **web-based Student ID Card Generator** built using **HTML, CSS, and JavaScript**.  
 It allows users to input student details, upload a photo, generate an ID card preview, and download it as a **PDF file** using the **html2pdf.js** library.
 
 ---
 
-## 🚀  Features
+## 🚀 Features
 
 - Generate professional student ID cards easily  
 - Upload and display student photo dynamically  
@@ -26,17 +26,17 @@ It allows users to input student details, upload a photo, generate an ID card pr
 
 ---
 
-## 📸  How It Works
+## 📸 How It Works
 
 1. Fill in all student details in the input form.  
 2. Upload a student photo (JPG/PNG).  
 3. Click **Generate ID** to preview the card.  
 4. Click **Download ID Card** to save it as a PDF file.  
 
+### 🖼️ Output Preview  
+![Student ID Card Output](https://github.com/Prajnapunya09/Student-ID-Card-generator/blob/main/student%20id%20card%20output%20img.jpg)
+
 ---
 
 ## 🗂️ Folder Structure
 
-Student-ID-Card-Generator/
-├── index.html # Main project file
-├── README.md # Project documentation
