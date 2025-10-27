@@ -33,8 +33,7 @@ It allows users to input student details, upload a photo, generate an ID card pr
 3. Click **Generate ID** to preview the card.  
 4. Click **Download ID Card** to save it as a PDF file.  
 
-### 🖼️ Output Preview  
-![Student ID Card Output](https://github.com/Prajnapunya09/Student-ID-Card-generator/blob/main/student%20id%20card%20output%20img.jpg)
+---
 
 ### 🖼️ Output Preview  
 ![Student ID Card Output](https://github.com/Prajnapunya09/Student-ID-Card-generator/blob/main/student%20id%20card%20output%20img.jpg)
