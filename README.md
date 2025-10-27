@@ -36,10 +36,10 @@ It allows users to input student details, upload a photo, generate an ID card pr
 ### 🖼️ Output Preview  
 ![Student ID Card Output](https://github.com/Prajnapunya09/Student-ID-Card-generator/blob/main/student%20id%20card%20output%20img.jpg)
 
+### 🎥 Output Video  
+https://github.com/Prajnapunya09/Student-ID-Card-generator/blob/main/output%20video(id%20card%20generator).mp4
+
 ---
 
 ## 🗂️ Folder Structure
 
-Student-ID-Card-Generator/
-├── index.html # Main project file
-├── README.md # Project documentation
