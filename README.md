@@ -43,3 +43,6 @@ https://github.com/Prajnapunya09/Student-ID-Card-generator/blob/main/output%20vi
 
 ## 🗂️ Folder Structure
 
+Student-ID-Card-Generator/
+├── index.html # Main project file
+├── README.md # Project documentation
